@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar los botones y configurar el OnClickListener
         botones[0][0] = findViewById(R.id.btn1);
         botones[0][1] = findViewById(R.id.btn2);
         botones[0][2] = findViewById(R.id.btn3);
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Button boton = (Button) v;
         if (!boton.getText().toString().isEmpty()) {
-            // El botón ya está marcado, no hacer nada.
+
             return;
         }
 
@@ -66,16 +65,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean comprobarGanador() {
         String jugadorActual = turnoJugador1 ? "X" : "O";
 
-        // Comprobar filas, columnas y diagonales
+
         for (int i = 0; i < 3; i++) {
-            // Comprobar filas
+
             if (botones[i][0].getText().equals(jugadorActual) &&
                     botones[i][1].getText().equals(jugadorActual) &&
                     botones[i][2].getText().equals(jugadorActual)) {
                 return true;
             }
 
-            // Comprobar columnas
+
             if (botones[0][i].getText().equals(jugadorActual) &&
                     botones[1][i].getText().equals(jugadorActual) &&
                     botones[2][i].getText().equals(jugadorActual)) {
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        // Comprobar diagonales
+
         if (botones[0][0].getText().equals(jugadorActual) &&
                 botones[1][1].getText().equals(jugadorActual) &&
                 botones[2][2].getText().equals(jugadorActual)) {
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void reiniciarTablero() {
-        // Reinicia el tablero borrando el texto de los botones y restableciendo las variables.
+
         contadorRondas = 0;
         turnoJugador1 = true;
         for (int i = 0; i < 3; i++) {
