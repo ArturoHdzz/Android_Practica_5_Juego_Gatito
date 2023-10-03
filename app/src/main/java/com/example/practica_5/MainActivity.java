@@ -1,6 +1,8 @@
 package com.example.practica_5;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,17 +51,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         contadorRondas++;
+        Bundle enviaDatos = new Bundle();
 
         if (comprobarGanador()) {
             String ganador = turnoJugador1 ? "Jugador 1 (X)" : "Jugador 2 (O)";
             mostrarMensaje(ganador + " gana!");
             reiniciarTablero();
+            enviaDatos.putString("KEY", ganador);
+            Intent i = new Intent(MainActivity.this, MainActivity3.class);
+            i.putExtras(enviaDatos);
+            startActivity(i);
         } else if (contadorRondas == 9) {
             mostrarMensaje("Empate");
             reiniciarTablero();
+            Intent i = new Intent(MainActivity.this, MainActivity3.class);
+            startActivity(i);
         } else {
             turnoJugador1 = !turnoJugador1;
         }
+
     }
 
     private boolean comprobarGanador() {
