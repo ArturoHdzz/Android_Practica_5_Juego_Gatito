@@ -64,12 +64,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (contadorRondas == 9) {
             mostrarMensaje("Empate");
             reiniciarTablero();
+            enviaDatos.putString("KEY", "Empate");
             Intent i = new Intent(MainActivity.this, MainActivity3.class);
+            i.putExtras(enviaDatos);
             startActivity(i);
         } else {
             turnoJugador1 = !turnoJugador1;
         }
-
     }
 
     private boolean comprobarGanador() {
